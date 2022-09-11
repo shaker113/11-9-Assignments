@@ -88,42 +88,36 @@ class _mywidgetState extends State<mywidget> {
   int c1 = 0;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [Text("$c1"), Icon(Icons.shopping_cart)],
-        ),
-        Container(
-          child: ListView.builder(
-            itemCount: gamePrice.length,
-            itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                isThreeLine: true,
-                trailing: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        c1 = c1 + 1;
-                      });
-                      print("add to cart $c1");
-                    },
-                    icon: Icon(
-                      Icons.add_shopping_cart,
-                    )),
-                title: Text("${gamesName[index]}"),
-                subtitle: Text("${gamePrice[index]}"),
-                leading: Image(
-                  image: NetworkImage("${gamesImages[index]}"),
-                  fit: BoxFit.fill,
-                ),
-                onTap: () {
-                  print("more details");
-                },
-              );
-            },
-          ),
-        ),
-      ],
-    );
+    return Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [Colors.blue.shade700, Colors.purple.shade600])),
+        child: ListView.builder(
+          itemCount: gamePrice.length,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              isThreeLine: true,
+              trailing: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      c1 = c1 + 1;
+                    });
+                    print("add to cart $c1");
+                  },
+                  icon: Icon(
+                    Icons.add_shopping_cart,
+                  )),
+              title: Text("${gamesName[index]}"),
+              subtitle: Text("${gamePrice[index]}"),
+              leading: Image(
+                image: NetworkImage("${gamesImages[index]}"),
+                fit: BoxFit.fill,
+              ),
+              onTap: () {
+                print("more details");
+              },
+            );
+          },
+        ));
   }
 }
